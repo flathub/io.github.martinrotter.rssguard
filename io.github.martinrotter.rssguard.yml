@@ -1,8 +1,8 @@
 id: io.github.martinrotter.rssguard
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: 5.15-22.08
 base: io.qt.qtwebengine.BaseApp
-base-version: '5.15-22.08'
+base-version: 5.15-22.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node16
@@ -31,8 +31,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/martinrotter/rssguard.git
-        tag: 4.3.4
-        commit: fb2c439b4059f72cbd1ac7df8ca2c2c1467f219f
+        tag: 4.4.0
+        commit: f1d98bbc89d754011ec70e45bfbb7df2a8580b40
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
