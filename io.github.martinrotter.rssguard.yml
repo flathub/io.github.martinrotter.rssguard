@@ -7,6 +7,7 @@ sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node16
 command: rssguard
+
 finish-args:
   - --device=dri
   - --share=ipc
@@ -17,8 +18,10 @@ finish-args:
   - --filesystem=xdg-download
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Notifications
+
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
+
 modules:
   - name: rssguard
     buildsystem: cmake-ninja
@@ -46,3 +49,26 @@ modules:
       - cp -a /usr/lib/sdk/node16/bin/{node,npm} /app/bin
       - cp -a /usr/lib/sdk/node16/lib/* /app/lib
       - rm -r /app/lib/node_modules/npm/{docs,man}
+
+  - name: clang-format
+    buildsystem: simple
+    build-commands:
+      - |
+        cmake -S llvm -B builddir \
+          -G Ninja \
+          -DCMAKE_BUILD_TYPE=MinSizeRel \
+          -DCMAKE_INSTALL_LIBDIR=/app/lib \
+          -DCMAKE_INSTALL_PREFIX=/app \
+          -DBUILD_SHARED_LIBS=OFF \
+          -DLLVM_ENABLE_PROJECTS=clang
+      - cmake --build builddir --parallel $(nproc) --target clang-format
+      - install -Dt /app/bin builddir/bin/clang-format
+    sources:
+      - type: archive
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-project-16.0.6.src.tar.xz
+        sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/llvm/llvm-project/releases/latest
+          version-query: .tag_name | sub("^llvmorg-"; "")
+          url-query: .assets[] | select(.name == "llvm-project-" + $version + ".src.tar.xz").browser_download_url
