@@ -41,6 +41,9 @@ modules:
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
+      # TODO: Remove for next release.
+      - type: patch
+        path: patches/Remove-pre-tags-from-appdata.patch
     cleanup:
       - /include
 

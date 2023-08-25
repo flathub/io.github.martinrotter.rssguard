@@ -1,0 +1,29 @@
+From 48d76821958577283ed7f2effab3cda4377667ae Mon Sep 17 00:00:00 2001
+From: guihkx <626206+guihkx@users.noreply.github.com>
+Date: Fri, 25 Aug 2023 04:20:01 -0300
+Subject: [PATCH] Remove <pre> tags from Linux's AppData file
+
+The specification does not allow them:
+
+https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-description
+---
+ resources/desktop/rssguard.metainfo.xml.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/resources/desktop/rssguard.metainfo.xml.in b/resources/desktop/rssguard.metainfo.xml.in
+index 08aa83e68..c47b84c56 100644
+--- a/resources/desktop/rssguard.metainfo.xml.in
++++ b/resources/desktop/rssguard.metainfo.xml.in
+@@ -31,10 +31,10 @@
+       <li>Tiny Tiny RSS</li>
+     </ul>
+     <p>
+-      Note for Flatpak users: The autostart feature can only work if you manually allow us access to the <pre>~/.config/autostart</pre> directory. You can easily do that with the following command:
++      Note for Flatpak users: The autostart feature can only work if you manually allow us access to the ~/.config/autostart directory. You can easily do that with the following command:
+     </p>
+     <p>
+-      <pre>flatpak override --user --filesystem=xdg-config/autostart @APP_REVERSE_NAME@</pre>
++      flatpak override --user --filesystem=xdg-config/autostart @APP_REVERSE_NAME@
+     </p>
+   </description>
+   <launchable type="desktop-id">@APP_REVERSE_NAME@.desktop</launchable>
