@@ -70,8 +70,8 @@ modules:
       - install -Dt /app/bin builddir/bin/clang-format
     sources:
       - type: archive
-        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-project-16.0.6.src.tar.xz
-        sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.0/llvm-project-17.0.0.src.tar.xz
+        sha256: e71ba1f238c47d6cc6a747ce3a407bfd0c3bf81cd7e10ba88b45c47f740efcbd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
