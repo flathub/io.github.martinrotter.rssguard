@@ -33,7 +33,7 @@ modules:
       - -DUSE_WEBENGINE=ON
     sources:
       - type: archive
-        archive-type: tar-gzip
+        dest-filename: rssguard.tar.gz
         url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.5.0
         sha256: ffd2631c293e5ca21642cfce6136876762e54db7bdda779d3ec9153d809cc422
         x-checker-data:
