@@ -5,7 +5,7 @@ base: io.qt.qtwebengine.BaseApp
 base-version: 5.15-22.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node16
+  - org.freedesktop.Sdk.Extension.node18
 command: rssguard
 
 finish-args:
@@ -47,12 +47,12 @@ modules:
     cleanup:
       - /include
 
-  - name: nodejs_and_npm
+  - name: nodejs-and-npm
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/bin /app/lib
-      - cp -a /usr/lib/sdk/node16/bin/{node,npm} /app/bin
-      - cp -a /usr/lib/sdk/node16/lib/* /app/lib
+      - mkdir -p /app/{bin,lib}
+      - cp -a /usr/lib/sdk/node18/bin/{node,npm} /app/bin
+      - cp -a /usr/lib/sdk/node18/lib/* /app/lib
       - rm -r /app/lib/node_modules/npm/{docs,man}
 
   - name: clang-format
