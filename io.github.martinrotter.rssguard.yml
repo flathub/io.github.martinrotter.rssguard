@@ -34,16 +34,13 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.5.0
-        sha256: ffd2631c293e5ca21642cfce6136876762e54db7bdda779d3ec9153d809cc422
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.5.1
+        sha256: cfd14876756849f5a2555bcf134f949a246cd833080ecef7ba51fd3c613d4f02
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
-      # TODO: Remove for next release.
-      - type: patch
-        path: patches/Remove-pre-tags-from-appdata.patch
     cleanup:
       - /include
 
