@@ -18,31 +18,140 @@ finish-args:
   - --filesystem=xdg-download
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Notifications
+  - --env=LC_NUMERIC=C # Needed to make libmpv not crash: https://github.com/mpv-player/mpv/issues/7102
+
+cleanup:
+  - '/lib/*.a'
 
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 
 modules:
-  - name: rssguard
-    buildsystem: cmake-ninja
+  - name: libmpv
+    buildsystem: meson
     config-opts:
-      - -DBUILD_WITH_QT6=OFF
-      - -DFORCE_BUNDLE_ICONS=ON
-      - -DIS_FLATPAK_BUILD=ON
-      - -DNO_UPDATE_CHECK=ON
-      - -DUSE_WEBENGINE=ON
+      - -Dbuild-date=false
+      - -Dlibmpv=true
+      - -Dlua=enabled
+      - -Dmanpage-build=disabled
     sources:
       - type: archive
-        dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.5.5
-        sha256: 8c887a068734ee3c191de93ea4c2dec3ed3ced4948ec6bbfe57ba42c3452cdf9
+        dest-filename: mpv.tar.gz
+        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.37.0
+        sha256: 26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
-          version-query: .tag_name
+          url: https://api.github.com/repos/mpv-player/mpv/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^v"; "")
           url-query: .tarball_url
     cleanup:
-      - /include
+      - /share/applications
+      - /share/bash-completion
+      - /share/doc
+      - /share/icons
+      - /share/zsh
+    modules:
+      - shared-modules/luajit/luajit.json
+
+      - name: libplacebo
+        buildsystem: meson
+        config-opts:
+          - -Ddemos=false
+        cleanup:
+          - /include
+          - /lib/pkgconfig
+        sources:
+          - type: git
+            url: https://github.com/haasn/libplacebo.git
+            tag: v6.338.1
+            commit: 2805a0d01c029084ab36bf5d0e3c8742012a0b27
+            x-checker-data:
+              type: git
+              tag-pattern: ^v([\d.]+)$
+        modules:
+          - name: glslang
+            buildsystem: cmake-ninja
+            config-opts:
+              - -DBUILD_SHARED_LIBS=ON
+            cleanup:
+              - /bin
+              - /include
+              - /lib/cmake
+            sources:
+              - type: archive
+                url: https://github.com/KhronosGroup/glslang/archive/13.1.1.tar.gz
+                sha256: 1c4d0a5a38c8aaf89a2d7e6093be734320599f5a6775b2726beeb05b0c054e66
+                x-checker-data:
+                  type: anitya
+                  project-id: 205796
+                  stable-only: true
+                  url-template: https://github.com/KhronosGroup/glslang/archive/$version.tar.gz
+              - type: archive
+                url: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.261.1.tar.gz
+                sha256: ead95c626ad482882a141d1aa0ce47b9453871f72c42c0b28d39c82f60a52008
+                dest: External/spirv-tools
+                x-checker-data:
+                  type: anitya
+                  stable-only: true
+                  project-id: 334920
+                  url-template: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-$version.tar.gz
+              - type: archive
+                url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-1.3.261.1.tar.gz
+                sha256: 32b4c6ae6a2fa9b56c2c17233c8056da47e331f76e117729925825ea3e77a739
+                dest: External/spirv-tools/external/spirv-headers
+                x-checker-data:
+                  type: anitya
+                  stable-only: true
+                  project-id: 334920
+                  url-template: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-$version.tar.gz
+
+      - name: libass
+        cleanup:
+          - /include
+          - /lib/*.la
+          - /lib/pkgconfig
+        config-opts:
+          - --disable-static
+        sources:
+          - type: archive
+            url: https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.xz
+            sha256: f0da0bbfba476c16ae3e1cfd862256d30915911f7abaa1b16ce62ee653192784
+            x-checker-data:
+              type: anitya
+              project-id: 1560
+              stable-only: true
+              url-template: https://github.com/libass/libass/releases/download/$version/libass-$version.tar.xz
+
+      - name: libXpresent
+        buildsystem: autotools
+        sources:
+          - type: archive
+            url: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-1.0.1.tar.xz
+            sha256: b964df9e5a066daa5e08d2dc82692c57ca27d00b8cc257e8e960c9f1cf26231b
+            x-checker-data:
+              type: anitya
+              project-id: 17166
+              stable-only: true
+              url-template: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-$version.tar.xz
+
+  - name: yt-dlp
+    no-autogen: true
+    no-make-install: true
+    make-args:
+      - yt-dlp
+      - PYTHON=/usr/bin/python3
+    post-install:
+      - install yt-dlp /app/bin
+    sources:
+      - type: archive
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2023.11.16.tar.gz
+        sha256: b689ced48b0da4944ce8a157e99e2349bbbf80ac7496d48825cfad02a410fa1e
+        x-checker-data:
+          type: anitya
+          project-id: 143399
+          stable-only: true
+          url-template: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/$version.tar.gz
 
   - name: nodejs-and-npm
     buildsystem: simple
@@ -74,3 +183,27 @@ modules:
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
           version-query: .tag_name | sub("^llvmorg-"; "")
           url-query: .assets[] | select(.name == "llvm-project-" + $version + ".src.tar.xz").browser_download_url
+
+  - name: rssguard
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_WITH_QT6=OFF
+      - -DENABLE_COMPRESSED_SITEMAP=ON
+      - -DENABLE_MEDIAPLAYER_LIBMPV=ON
+      - -DENABLE_MEDIAPLAYER_QTMULTIMEDIA=OFF
+      - -DFORCE_BUNDLE_ICONS=ON
+      - -DIS_FLATPAK_BUILD=ON
+      - -DNO_LITE=ON
+      - -DNO_UPDATE_CHECK=ON
+    sources:
+      - type: archive
+        dest-filename: rssguard.tar.gz
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.6.1
+        sha256: 039f0a18339e739a3346e58088f156c677d816a20e66c96b9f00ef2ac3a06184
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
+          version-query: .tag_name
+          url-query: .tarball_url
+    cleanup:
+      - /include
