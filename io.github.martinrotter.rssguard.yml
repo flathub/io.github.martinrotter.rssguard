@@ -21,7 +21,7 @@ finish-args:
   - --env=LC_NUMERIC=C # Needed to make libmpv not crash: https://github.com/mpv-player/mpv/issues/7102
 
 cleanup:
-  - '/lib/*.a'
+  - /lib/*.a
 
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
@@ -198,8 +198,8 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.6.1
-        sha256: 039f0a18339e739a3346e58088f156c677d816a20e66c96b9f00ef2ac3a06184
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.6.2
+        sha256: 54a9b2fb085f026b38111c1e089fc22b70635c6726a5819578e5e0fe30e13423
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
