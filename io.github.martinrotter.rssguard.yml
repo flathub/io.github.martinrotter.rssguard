@@ -79,6 +79,7 @@ modules:
               - /lib/cmake
             sources:
               - type: archive
+                dest-filename: glslang.tar.gz
                 url: https://github.com/KhronosGroup/glslang/archive/14.1.0.tar.gz
                 sha256: b5e4c36d60eda7613f36cfee3489c6f507156829c707e1ecd7f48ca45b435322
                 x-checker-data:
@@ -87,6 +88,7 @@ modules:
                   stable-only: true
                   url-template: https://github.com/KhronosGroup/glslang/archive/$version.tar.gz
               - type: archive
+                dest-filename: spirv-tools.tar.gz
                 url: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.261.1.tar.gz
                 sha256: ead95c626ad482882a141d1aa0ce47b9453871f72c42c0b28d39c82f60a52008
                 dest: External/spirv-tools
@@ -96,6 +98,7 @@ modules:
                   project-id: 334920
                   url-template: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-$version.tar.gz
               - type: archive
+                dest-filename: spirv-headers.tar.gz
                 url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-1.3.261.1.tar.gz
                 sha256: 32b4c6ae6a2fa9b56c2c17233c8056da47e331f76e117729925825ea3e77a739
                 dest: External/spirv-tools/external/spirv-headers
@@ -144,6 +147,7 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
+        dest-filename: yt-dlp.tar.gz
         url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2024.03.10.tar.gz
         sha256: 079dbf54586e8120c7d76e0dd1b7a60e6c13f4d23f9681fc919577f2fe17d8cd
         x-checker-data:
