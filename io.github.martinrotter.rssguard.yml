@@ -79,8 +79,8 @@ modules:
               - /lib/cmake
             sources:
               - type: archive
-                url: https://github.com/KhronosGroup/glslang/archive/14.0.0.tar.gz
-                sha256: 80bbb916a23e94ea9cbfb1acb5d1a44a7e0c9613bcf5b5947c03f2273bdc92b0
+                url: https://github.com/KhronosGroup/glslang/archive/14.1.0.tar.gz
+                sha256: b5e4c36d60eda7613f36cfee3489c6f507156829c707e1ecd7f48ca45b435322
                 x-checker-data:
                   type: anitya
                   project-id: 205796
@@ -144,8 +144,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2023.12.30.tar.gz
-        sha256: 2878501990f3ab6aa8eabb7346c16d4b4cbc01984372a1f0b3a6be8d260c7aff
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2024.03.10.tar.gz
+        sha256: 079dbf54586e8120c7d76e0dd1b7a60e6c13f4d23f9681fc919577f2fe17d8cd
         x-checker-data:
           type: anitya
           project-id: 143399
@@ -175,8 +175,8 @@ modules:
       - install -Dt /app/bin builddir/bin/clang-format
     sources:
       - type: archive
-        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-project-17.0.6.src.tar.xz
-        sha256: 58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.1/llvm-project-18.1.1.src.tar.xz
+        sha256: 8f34c6206be84b186b4b31f47e1b52758fa38348565953fad453d177ef34c0ad
         x-checker-data:
           type: json
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
