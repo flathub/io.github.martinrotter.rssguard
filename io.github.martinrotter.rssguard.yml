@@ -208,5 +208,7 @@ modules:
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
+      - type: patch
+        path: patches/Fix-crash-in-notifications-settings.patch
     cleanup:
       - /include
