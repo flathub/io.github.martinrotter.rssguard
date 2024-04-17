@@ -36,14 +36,16 @@ modules:
     sources:
       - type: archive
         dest-filename: mpv.tar.gz
-        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.37.0
-        sha256: 26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f
+        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.38.0
+        sha256: 0170b7e314de7ca5104832f29fcba09cb680e9dd7bdeaaa9f1521ce60d6f9bb0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/mpv-player/mpv/releases/latest
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           url-query: .tarball_url
+      - type: patch
+        path: patches/context_drm_egl-guard-gbm_device-on-uninit.patch
     cleanup:
       - /share/applications
       - /share/bash-completion
@@ -210,5 +212,7 @@ modules:
           url-query: .tarball_url
       - type: patch
         path: patches/Fix-crash-in-notifications-settings.patch
+      - type: patch
+        path: patches/Force-libmpv-to-use-the-libmpv-video-output.patch
     cleanup:
       - /include

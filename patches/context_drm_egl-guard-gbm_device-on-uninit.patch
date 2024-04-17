@@ -1,0 +1,27 @@
+From e5d683e187d1e67fcfc944769a7c31cfcc2d0491 Mon Sep 17 00:00:00 2001
+From: Dudemanguy <random342@airmail.cc>
+Date: Thu, 18 Apr 2024 14:57:01 -0500
+Subject: [PATCH] context_drm_egl: guard gbm_device on uninit
+
+Not all cards support gbm which means the creation of the gbm device
+will fail. However during the uninit process, the destruction of the
+device was unconditionally done which leads to a segfault. Guard it
+instead. Fixes #13929.
+---
+ video/out/opengl/context_drm_egl.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/video/out/opengl/context_drm_egl.c b/video/out/opengl/context_drm_egl.c
+index ce86570efe79..da28093562bb 100644
+--- a/video/out/opengl/context_drm_egl.c
++++ b/video/out/opengl/context_drm_egl.c
+@@ -491,7 +491,8 @@ static void drm_egl_uninit(struct ra_ctx *ctx)
+         if (p->gbm.surface)
+             gbm_surface_destroy(p->gbm.surface);
+         eglTerminate(p->egl.display);
+-        gbm_device_destroy(p->gbm.device);
++        if (p->gbm.device)
++            gbm_device_destroy(p->gbm.device);
+ 
+         if (p->drm_params.render_fd != -1)
+             close(p->drm_params.render_fd);
