@@ -36,8 +36,8 @@ modules:
     sources:
       - type: archive
         dest-filename: mpv.tar.gz
-        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.37.0
-        sha256: 26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f
+        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.38.0
+        sha256: 0170b7e314de7ca5104832f29fcba09cb680e9dd7bdeaaa9f1521ce60d6f9bb0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/mpv-player/mpv/releases/latest
@@ -179,8 +179,8 @@ modules:
       - install -Dt /app/bin builddir/bin/clang-format
     sources:
       - type: archive
-        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.3/llvm-project-18.1.3.src.tar.xz
-        sha256: 2929f62d69dec0379e529eb632c40e15191e36f3bd58c2cb2df0413a0dc48651
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.4/llvm-project-18.1.4.src.tar.xz
+        sha256: 2c01b2fbb06819a12a92056a7fd4edcdc385837942b5e5260b9c2c0baff5116b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
