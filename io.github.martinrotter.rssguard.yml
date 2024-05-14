@@ -204,16 +204,12 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.6.6
-        sha256: 932ab66f8529c47c96c05fe05ed169f31275a2471289630c22819ca4a861e5c9
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.7.0
+        sha256: ef6f080b826a2027e182e30bcc3c740898972e8034be84251cf39732a40c6f1f
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
-      - type: patch
-        path: patches/Fix-crash-in-notifications-settings.patch
-      - type: patch
-        path: patches/Force-libmpv-to-use-the-libmpv-video-output.patch
     cleanup:
       - /include
