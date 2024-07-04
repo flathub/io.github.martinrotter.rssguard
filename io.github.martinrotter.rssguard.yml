@@ -193,6 +193,7 @@ modules:
   - name: rssguard
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_INSTALL_LIBDIR=lib
       - -DBUILD_WITH_QT6=ON
       - -DENABLE_COMPRESSED_SITEMAP=ON
       - -DENABLE_MEDIAPLAYER_LIBMPV=ON
