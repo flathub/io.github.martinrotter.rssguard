@@ -5,7 +5,7 @@ base: io.qt.qtwebengine.BaseApp
 base-version: '6.6'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node18
+  - org.freedesktop.Sdk.Extension.node20
 command: rssguard
 
 finish-args:
@@ -164,9 +164,8 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir -p /app/{bin,lib}
-      - cp -a /usr/lib/sdk/node18/bin/{node,npm} /app/bin
-      - cp -a /usr/lib/sdk/node18/lib/* /app/lib
-      - rm -r /app/lib/node_modules/npm/{docs,man}
+      - cp -a /usr/lib/sdk/node20/bin/{node,npm} /app/bin
+      - cp -a /usr/lib/sdk/node20/lib/* /app/lib
 
   - name: clang-format
     buildsystem: simple
