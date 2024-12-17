@@ -81,8 +81,8 @@ modules:
             sources:
               - type: archive
                 dest-filename: glslang.tar.gz
-                url: https://github.com/KhronosGroup/glslang/archive/15.0.0.tar.gz
-                sha256: c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064
+                url: https://github.com/KhronosGroup/glslang/archive/15.1.0.tar.gz
+                sha256: 4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc
                 x-checker-data:
                   type: anitya
                   project-id: 205796
@@ -179,8 +179,8 @@ modules:
       - install -Dt /app/bin builddir/bin/clang-format
     sources:
       - type: archive
-        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.5/llvm-project-19.1.5.src.tar.xz
-        sha256: bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz
+        sha256: e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34
         x-checker-data:
           type: json
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
