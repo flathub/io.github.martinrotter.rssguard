@@ -81,8 +81,8 @@ modules:
             sources:
               - type: archive
                 dest-filename: glslang.tar.gz
-                url: https://github.com/KhronosGroup/glslang/archive/15.0.0.tar.gz
-                sha256: c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064
+                url: https://github.com/KhronosGroup/glslang/archive/15.1.0.tar.gz
+                sha256: 4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc
                 x-checker-data:
                   type: anitya
                   project-id: 205796
@@ -201,8 +201,8 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.7.4
-        sha256: c5008f21372ab71f5cad67e37eab69798e472d943d148d4900f14c567eb38407
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.8.0
+        sha256: 0af21c7423d6134ab5224346d49487b8b9694118aafb6b0d3f6f0098fc2c03b6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
