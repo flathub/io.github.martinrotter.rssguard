@@ -37,8 +37,8 @@ modules:
     sources:
       - type: archive
         dest-filename: mpv.tar.gz
-        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.39.0
-        sha256: 635debea7f816211519c1e721efa7ff09c59cd1cf3148c1efe6009daeeba0361
+        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.40.0
+        sha256: 71a0ca9c5dbc0d1f9d252599f5b3ad5ad07f0aefd50f5e8b713105e1c9d2732d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/mpv-player/mpv/releases/latest
@@ -149,8 +149,8 @@ modules:
     sources:
       - type: archive
         dest-filename: yt-dlp.tar.gz
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.03.25.tar.gz
-        sha256: 357bd541e96d7cf7ab5acb91af457858992f3762ff6bbb318c471bac94bf0c5e
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.03.26.tar.gz
+        sha256: f91b7cd8e58d538e90855fee2e24c34c5f78668a28889c388ed293ce4089b78c
         x-checker-data:
           type: anitya
           project-id: 143399
