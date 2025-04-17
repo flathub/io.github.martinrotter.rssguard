@@ -201,8 +201,8 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.8.3
-        sha256: 2819d3f93f2ed0eb371f845f1af5393107abddec4f946f388f6b501c4c071216
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/continuous
+        sha256: d7a96c5a3ecbec6c1b8c35cd4a13009ede2de61fd2c39d0619dee04e17e9c6c6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
