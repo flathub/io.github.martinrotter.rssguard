@@ -90,8 +90,8 @@ modules:
                   url-template: https://github.com/KhronosGroup/glslang/archive/$version.tar.gz
               - type: archive
                 dest-filename: spirv-tools.tar.gz
-                url: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-1.4.309.0.tar.gz
-                sha256: 6b8577054c575573ead3ad71cb6a2c0b3397b64c746cc3c99e48cc5e324c1b55
+                url: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-1.4.313.0.tar.gz
+                sha256: 6b60f723345ceed5291cceebbcfacf7fea9361a69332261fa08ae57e2a562005
                 dest: External/spirv-tools
                 x-checker-data:
                   type: anitya
@@ -100,8 +100,8 @@ modules:
                   url-template: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-$version.tar.gz
               - type: archive
                 dest-filename: spirv-headers.tar.gz
-                url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.4.309.0.tar.gz
-                sha256: a96f8b4f2dfb18f7432e5c523e220ab0075372a9509e0c25fbff21c76af0de7c
+                url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.4.313.0.tar.gz
+                sha256: f68be549d74afb61600a1e3a7d1da1e6b7437758c8e77d664909f88f302c5ac1
                 dest: External/spirv-tools/external/spirv-headers
                 x-checker-data:
                   type: anitya
