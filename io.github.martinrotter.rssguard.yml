@@ -127,6 +127,8 @@ modules:
               url-template: https://github.com/libass/libass/releases/download/$version/libass-$version.tar.xz
 
       - name: libXpresent
+        cleanup:
+          - /share/man
         buildsystem: autotools
         sources:
           - type: archive
