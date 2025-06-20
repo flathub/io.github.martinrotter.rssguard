@@ -69,45 +69,6 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^v([\d.]+)$
-        modules:
-          - name: glslang
-            buildsystem: cmake-ninja
-            config-opts:
-              - -DBUILD_SHARED_LIBS=ON
-            cleanup:
-              - /bin
-              - /include
-              - /lib/cmake
-            sources:
-              - type: archive
-                dest-filename: glslang.tar.gz
-                url: https://github.com/KhronosGroup/glslang/archive/15.3.0.tar.gz
-                sha256: c6c21fe1873c37e639a6a9ac72d857ab63a5be6893a589f34e09a6c757174201
-                x-checker-data:
-                  type: anitya
-                  project-id: 205796
-                  stable-only: true
-                  url-template: https://github.com/KhronosGroup/glslang/archive/$version.tar.gz
-              - type: archive
-                dest-filename: spirv-tools.tar.gz
-                url: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-1.4.313.0.tar.gz
-                sha256: 6b60f723345ceed5291cceebbcfacf7fea9361a69332261fa08ae57e2a562005
-                dest: External/spirv-tools
-                x-checker-data:
-                  type: anitya
-                  stable-only: true
-                  project-id: 334920
-                  url-template: https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-$version.tar.gz
-              - type: archive
-                dest-filename: spirv-headers.tar.gz
-                url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.4.313.0.tar.gz
-                sha256: f68be549d74afb61600a1e3a7d1da1e6b7437758c8e77d664909f88f302c5ac1
-                dest: External/spirv-tools/external/spirv-headers
-                x-checker-data:
-                  type: anitya
-                  stable-only: true
-                  project-id: 334920
-                  url-template: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-$version.tar.gz
 
       - name: libass
         cleanup:
