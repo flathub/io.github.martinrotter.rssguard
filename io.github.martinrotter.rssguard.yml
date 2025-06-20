@@ -31,6 +31,7 @@ modules:
     buildsystem: meson
     config-opts:
       - -Dbuild-date=false
+      - -Dcplayer=false
       - -Dlibmpv=true
       - -Dlua=enabled
       - -Dmanpage-build=disabled
@@ -45,12 +46,6 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           url-query: .tarball_url
-    cleanup:
-      - /share/applications
-      - /share/bash-completion
-      - /share/doc
-      - /share/icons
-      - /share/zsh
     modules:
       - shared-modules/luajit/luajit.json
 
