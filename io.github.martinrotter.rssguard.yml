@@ -107,8 +107,8 @@ modules:
     sources:
       - type: archive
         dest-filename: yt-dlp.tar.gz
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.06.30.tar.gz
-        sha256: aedd8b6685972ca90ba0374ad4ba00e70f9664b763ca0b07fedbb2e67102a110
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.07.21.tar.gz
+        sha256: 04732b85bb56e107f6a718cdfcd069a152c86e87b9ca9606383555e0c65f78dc
         x-checker-data:
           type: anitya
           project-id: 143399
