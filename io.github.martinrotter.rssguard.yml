@@ -166,5 +166,8 @@ modules:
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
+      # https://github.com/martinrotter/rssguard/commit/45f8b159261de20f16e69701f16fed7f29100480
+      - type: patch
+        path: patches/0001-fix-long-standing-bug-1654.patch
     cleanup:
       - /include
