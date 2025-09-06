@@ -169,5 +169,8 @@ modules:
       # https://github.com/martinrotter/rssguard/commit/45f8b159261de20f16e69701f16fed7f29100480
       - type: patch
         path: patches/0001-fix-long-standing-bug-1654.patch
+      # https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
+      - type: patch
+        path: patches/0002-Set-a-fixed-release-date.patch
     cleanup:
       - /include
