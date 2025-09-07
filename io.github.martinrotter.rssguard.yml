@@ -159,18 +159,15 @@ modules:
     sources:
       - type: archive
         dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.8.5
-        sha256: 56ddcdc702fffa7004ee3d4a3fde1ae6a62d2b26df3296c0806deafc0fd91620
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.8.6
+        sha256: c1ec4ce2157240679bb5e3d5f1d8b3fef3553b88723673313ac2a1bfe28143fe
         x-checker-data:
           type: json
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
-      # https://github.com/martinrotter/rssguard/commit/45f8b159261de20f16e69701f16fed7f29100480
-      - type: patch
-        path: patches/0001-fix-long-standing-bug-1654.patch
       # https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
       - type: patch
-        path: patches/0002-Set-a-fixed-release-date.patch
+        path: patches/0001-Set-a-fixed-release-date.patch
     cleanup:
       - /include

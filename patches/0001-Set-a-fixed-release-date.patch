@@ -1,6 +1,6 @@
 From 2b3b4d46d3727040684b340894f76eaaafc9c5a2 Mon Sep 17 00:00:00 2001
 From: guihkx <626206+guihkx@users.noreply.github.com>
-Date: Sat, 6 Sep 2025 13:28:49 -0300
+Date: Sun, 7 Sep 2025 12:26:41 -0300
 Subject: [PATCH] Set a fixed release date
 
 Backport of: https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
@@ -10,7 +10,7 @@ Backport of: https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f1
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e7f3e4f82..ffe0ced50 100644
+index 09f3999f2..1c1c6733f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -69,8 +69,9 @@
@@ -26,16 +26,16 @@ index e7f3e4f82..ffe0ced50 100644
  set(APP_NAME "RSS Guard")
  set(APP_EMAIL "rotter.martinos@gmail.com")
 diff --git a/resources/text/CHANGELOG b/resources/text/CHANGELOG
-index ccb1f7d97..437d9af2d 100644
+index af6d13360..e982c8676 100644
 --- a/resources/text/CHANGELOG
 +++ b/resources/text/CHANGELOG
 @@ -1,5 +1,6 @@
- 4.8.5
+ 4.8.6
  -----
-+Released on: 2025-05-27
++Released on: 2025-09-07
  
- Added:
- * All dropdown filters (for both feed and article lists) can now be assigned to keyboard shortcuts.
+ Dear users. This is (probably) the last release from 4.x line of RSS Guard.
+ 
 -- 
 2.51.0
 
