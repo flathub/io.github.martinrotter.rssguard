@@ -107,8 +107,8 @@ modules:
     sources:
       - type: archive
         dest-filename: yt-dlp.tar.gz
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.10.14.tar.gz
-        sha256: ca89bef86a5580b959c05b27a274d5bc039480bd0e4106c90f1470fc7c650745
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.10.22.tar.gz
+        sha256: ef21d5427e896d46180408dc1feb0da19bf0a97876b0f10b15f6304fa496991c
         x-checker-data:
           type: anitya
           project-id: 143399
@@ -137,8 +137,8 @@ modules:
       - install -Dt /app/bin builddir/bin/clang-format
     sources:
       - type: archive
-        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.3/llvm-project-21.1.3.src.tar.xz
-        sha256: 9c9db50d8046f668156d83f6b594631b4ca79a0d96e4f19bed9dc019b022e58f
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/llvm-project-21.1.4.src.tar.xz
+        sha256: a01ad7e5167780c945871d75c0413081d12067607a6de5cf71dc3e8d1a82112c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
