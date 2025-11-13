@@ -168,6 +168,8 @@ modules:
           url-query: .tarball_url
       # https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
       - type: patch
-        path: patches/0001-Set-a-fixed-release-date.patch
+        paths:
+          - patches/0001-Set-a-fixed-release-date.patch
+          - patches/Update-ghostery-adblocker-version.patch
     cleanup:
       - /include
