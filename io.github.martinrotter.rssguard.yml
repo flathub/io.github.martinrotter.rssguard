@@ -103,24 +103,9 @@ modules:
           - /lib/pkgconfig
           - /share/man
 
-  - name: yt-dlp
-    no-autogen: true
-    no-make-install: true
-    make-args:
-      - yt-dlp
-      - PYTHON=/usr/bin/python3
-    post-install:
-      - install yt-dlp /app/bin
-    sources:
-      - type: archive
-        dest-filename: yt-dlp.tar.gz
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2025.11.12.tar.gz
-        sha256: 6f5f2d716968d6c84d05d179fc1ce50ccca23706b9dbbc3c57fec97a8b9ea440
-        x-checker-data:
-          type: anitya
-          project-id: 143399
-          stable-only: true
-          url-template: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/$version.tar.gz
+  # yt-dlp build from PyPI, with yt-dlp-ejs (https://github.com/yt-dlp/yt-dlp/wiki/EJS).
+  # Generated with: flatpak-pip-generator --runtime=org.freedesktop.Sdk//24.08 --checker-data yt-dlp[default]
+  - python3-yt-dlp.json
 
   - name: nodejs-and-npm
     buildsystem: simple
