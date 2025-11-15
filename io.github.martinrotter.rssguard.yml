@@ -46,6 +46,9 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("^v"; "")
           url-query: .tarball_url
+    cleanup:
+      - /include
+      - /lib/pkgconfig
     modules:
       - shared-modules/luajit/luajit.json
 
@@ -66,10 +69,6 @@ modules:
               tag-pattern: ^v([\d.]+)$
 
       - name: libass
-        cleanup:
-          - /include
-          - /lib/*.la
-          - /lib/pkgconfig
         config-opts:
           - --disable-static
         sources:
@@ -81,11 +80,14 @@ modules:
               project-id: 1560
               stable-only: true
               url-template: https://github.com/libass/libass/releases/download/$version/libass-$version.tar.xz
+        cleanup:
+          - /include
+          - /lib/*.la
+          - /lib/pkgconfig
 
       - name: libXpresent
-        cleanup:
-          - /share/man
-        buildsystem: autotools
+        config-opts:
+          - --disable-static
         sources:
           - type: archive
             url: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-1.0.2.tar.xz
@@ -95,6 +97,11 @@ modules:
               project-id: 17166
               stable-only: true
               url-template: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-$version.tar.xz
+        cleanup:
+          - /include
+          - /lib/*.la
+          - /lib/pkgconfig
+          - /share/man
 
   - name: yt-dlp
     no-autogen: true
