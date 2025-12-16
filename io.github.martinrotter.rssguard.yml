@@ -1,8 +1,8 @@
 id: io.github.martinrotter.rssguard
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.10'
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.8'
+base-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node24
@@ -67,6 +67,9 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^v([\d.]+)$
+          - type: patch
+            # https://github.com/haasn/libplacebo/commit/12509c0f1ee8c22ae163017f0a5e7b8a9d983a17
+            path: patches/0001-vulkan-utils_gen-fix-for-python-3.14.patch
 
       - name: libass
         config-opts:
