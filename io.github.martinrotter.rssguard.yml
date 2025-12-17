@@ -161,10 +161,10 @@ modules:
         url: https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/llvm-project-21.1.8.src.tar.xz
         sha256: 4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/llvm/llvm-project/releases/latest
-          version-query: .tag_name | sub("^llvmorg-"; "")
-          url-query: .assets[] | select(.name == "llvm-project-" + $version + ".src.tar.xz").browser_download_url
+          type: anitya
+          project-id: 1830
+          stable-only: true
+          url-template: https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz
 
   - name: rssguard
     buildsystem: cmake-ninja
