@@ -144,18 +144,18 @@ modules:
       - cp -a /usr/lib/sdk/node24/lib/* /app/lib
 
   - name: clang-format
-    buildsystem: simple
+    buildsystem: cmake-ninja
+    subdir: llvm
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=MinSizeRel
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DLLVM_ENABLE_PROJECTS=clang
+    make-args:
+      - clang-format
+    no-make-install: true
     build-commands:
-      - |
-        cmake -S llvm -B builddir \
-          -G Ninja \
-          -DCMAKE_BUILD_TYPE=MinSizeRel \
-          -DCMAKE_INSTALL_LIBDIR=/app/lib \
-          -DCMAKE_INSTALL_PREFIX=/app \
-          -DBUILD_SHARED_LIBS=OFF \
-          -DLLVM_ENABLE_PROJECTS=clang
-      - cmake --build builddir --parallel $(nproc) --target clang-format
-      - install -Dt /app/bin builddir/bin/clang-format
+      - install -Dt /app/bin bin/clang-format
     sources:
       - type: archive
         url: https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/llvm-project-21.1.8.src.tar.xz
