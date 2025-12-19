@@ -188,10 +188,13 @@ modules:
           url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
           version-query: .tag_name
           url-query: .tarball_url
-      # https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
       - type: patch
         paths:
+          # https://github.com/martinrotter/rssguard/commit/7ec01c8dbafe45b55f133b0fd89384e8cb953abe
           - patches/0001-Set-a-fixed-release-date.patch
+          # https://github.com/martinrotter/rssguard/discussions/1871
           - patches/Update-ghostery-adblocker-version.patch
+          # https://github.com/martinrotter/rssguard/commit/22dacd83c5f2fbfdbc6e83e0b730e9b42611103d
+          - patches/Fix-crash-on-exit.patch
     cleanup:
       - /include
