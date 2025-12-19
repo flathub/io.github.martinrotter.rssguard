@@ -193,5 +193,6 @@ modules:
         paths:
           - patches/0001-Set-a-fixed-release-date.patch
           - patches/Update-ghostery-adblocker-version.patch
+          - patches/Fix-crash-on-exit.patch
     cleanup:
       - /include
