@@ -38,8 +38,8 @@ modules:
     sources:
       - type: archive
         dest-filename: mpv.tar.gz
-        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.40.0
-        sha256: 71a0ca9c5dbc0d1f9d252599f5b3ad5ad07f0aefd50f5e8b713105e1c9d2732d
+        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.41.0
+        sha256: 4f900c91f9fdb36bc6442968775910aa8c0f67dade72a3d51a4b0c2b39af02da
         x-checker-data:
           type: json
           url: https://api.github.com/repos/mpv-player/mpv/releases/latest
