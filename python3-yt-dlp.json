@@ -103,8 +103,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/9d/0d/1f0d7a735ca60b87953271b15d00eff5eef05f6118390ddf6f81982526ed/yt_dlp_ejs-0.3.2-py3-none-any.whl",
-            "sha256": "f2dc6b3d1b909af1f13e021621b0af048056fca5fb07c4db6aa9bbb37a4f66a9",
+            "url": "https://files.pythonhosted.org/packages/a4/90/8911146822364666be47f184c4180cec20fcc537a268ef40d1ab077dd25b/yt_dlp_ejs-0.4.0-py3-none-any.whl",
+            "sha256": "19278cff397b243074df46342bb7616c404296aeaff01986b62b4e21823b0b9c",
             "x-checker-data": {
                 "type": "pypi",
                 "name": "yt_dlp_ejs",
