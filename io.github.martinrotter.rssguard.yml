@@ -38,14 +38,13 @@ modules:
     sources:
       - type: archive
         dest-filename: mpv.tar.gz
-        url: https://api.github.com/repos/mpv-player/mpv/tarball/v0.41.0
-        sha256: 4f900c91f9fdb36bc6442968775910aa8c0f67dade72a3d51a4b0c2b39af02da
+        url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz
+        sha256: ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/mpv-player/mpv/releases/latest
-          tag-query: .tag_name
-          version-query: $tag | sub("^v"; "")
-          url-query: .tarball_url
+          type: anitya
+          project-id: 5348
+          stable-only: true
+          url-template: https://github.com/mpv-player/mpv/archive/refs/tags/v$version.tar.gz
     cleanup:
       - /include
       - /lib/pkgconfig
