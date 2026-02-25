@@ -17,112 +17,6 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
 
 modules:
-  - name: libmpv
-    buildsystem: meson
-    config-opts:
-      - -Dbuild-date=false
-      - -Dcplayer=false
-      - -Dlibmpv=true
-      - -Dlua=enabled
-      - -Dmanpage-build=disabled
-    sources:
-      - type: archive
-        dest-filename: mpv.tar.gz
-        url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz
-        sha256: ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209
-        x-checker-data:
-          type: anitya
-          project-id: 5348
-          stable-only: true
-          url-template: https://github.com/mpv-player/mpv/archive/refs/tags/v$version.tar.gz
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-    modules:
-      - shared-modules/luajit/luajit.json
-
-      - name: libplacebo
-        buildsystem: meson
-        config-opts:
-          - -Ddemos=false
-        cleanup:
-          - /include
-          - /lib/pkgconfig
-        sources:
-          - type: git
-            url: https://github.com/haasn/libplacebo.git
-            tag: v7.360.0
-            commit: b2ea27dceb6418aabfe9121174c6dbb232942998
-            x-checker-data:
-              type: git
-              tag-pattern: ^v([\d.]+)$
-
-      - name: libass
-        config-opts:
-          - --disable-static
-        sources:
-          - type: archive
-            url: https://github.com/libass/libass/releases/download/0.17.4/libass-0.17.4.tar.xz
-            sha256: 78f1179b838d025e9c26e8fef33f8092f65611444ffa1bfc0cfac6a33511a05a
-            x-checker-data:
-              type: anitya
-              project-id: 1560
-              stable-only: true
-              url-template: https://github.com/libass/libass/releases/download/$version/libass-$version.tar.xz
-        cleanup:
-          - /include
-          - /lib/*.la
-          - /lib/pkgconfig
-
-      - name: libXpresent
-        config-opts:
-          - --disable-static
-        sources:
-          - type: archive
-            url: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-1.0.2.tar.xz
-            sha256: 4e5b21b4812206a4b223013606ae31170502c1043038777a1ef8f70c09d37602
-            x-checker-data:
-              type: anitya
-              project-id: 17166
-              stable-only: true
-              url-template: https://xorg.freedesktop.org/archive/individual/lib/libXpresent-$version.tar.xz
-        cleanup:
-          - /include
-          - /lib/*.la
-          - /lib/pkgconfig
-          - /share/man
-
-  # yt-dlp build from PyPI, with yt-dlp-ejs (https://github.com/yt-dlp/yt-dlp/wiki/EJS).
-  # Generated with: flatpak-pip-generator.py --runtime=org.freedesktop.Sdk//25.08 --checker-data yt-dlp[default]
-  - python3-yt-dlp.json
-
-  # Required by yt-dlp. More specifically, by yt-dlp-ejs: https://github.com/yt-dlp/yt-dlp/wiki/EJS
-  - name: deno
-    buildsystem: simple
-    build-commands:
-      - install -Dm0755 deno -t /app/bin
-    sources:
-      - type: archive
-        only-arches:
-          - x86_64
-        url: https://github.com/denoland/deno/releases/download/v2.7.1/deno-x86_64-unknown-linux-gnu.zip
-        sha256: b7154ae42839d7b1453422e2f33c907e5c68fde8fe9f145cd43b8dd083671a6f
-        x-checker-data:
-          type: anitya
-          project-id: 133196
-          stable-only: true
-          url-template: https://github.com/denoland/deno/releases/download/v$version/deno-x86_64-unknown-linux-gnu.zip
-      - type: archive
-        only-arches:
-          - aarch64
-        url: https://github.com/denoland/deno/releases/download/v2.7.1/deno-aarch64-unknown-linux-gnu.zip
-        sha256: bfe62e582faceb9885748f00a9f44cd5af458b9d08d7ac8275c4048ff1bb1540
-        x-checker-data:
-          type: anitya
-          project-id: 133196
-          stable-only: true
-          url-template: https://github.com/denoland/deno/releases/download/v$version/deno-aarch64-unknown-linux-gnu.zip
-
   - name: clang-format
     buildsystem: cmake-ninja
     subdir: llvm
@@ -157,6 +51,8 @@ modules:
       - -DREVISION_FROM_GIT=OFF
       - -DNO_UPDATE_CHECK=ON
       - -DIS_FLATPAK_BUILD=ON
+      - -DENABLE_MEDIAPLAYER_LIBMPV=OFF
+      - -DENABLE_MEDIAPLAYER_QTMULTIMEDIA=OFF
     sources:
       - type: archive
         url: https://github.com/martinrotter/rssguard/releases/download/5.0.0/rssguard-5.0.0-src.tar.gz
@@ -166,5 +62,9 @@ modules:
           project-id: 19046
           stable-only: true
           url-template: https://github.com/martinrotter/rssguard/releases/download/$version/rssguard-$version-src.tar.gz
+      - type: patch
+        paths:
+          # https://github.com/martinrotter/rssguard/pull/2031
+          - patches/0001-Fix-building-with-ENABLE_MEDIAPLAYER_-LIBMPV-QTMULTI.patch
     cleanup:
       - /include
