@@ -96,33 +96,6 @@ modules:
   # Generated with: flatpak-pip-generator.py --runtime=org.freedesktop.Sdk//25.08 --checker-data yt-dlp[default]
   - python3-yt-dlp.json
 
-  # Required by yt-dlp. More specifically, by yt-dlp-ejs: https://github.com/yt-dlp/yt-dlp/wiki/EJS
-  - name: deno
-    buildsystem: simple
-    build-commands:
-      - install -Dm0755 deno -t /app/bin
-    sources:
-      - type: archive
-        only-arches:
-          - x86_64
-        url: https://github.com/denoland/deno/releases/download/v2.7.1/deno-x86_64-unknown-linux-gnu.zip
-        sha256: b7154ae42839d7b1453422e2f33c907e5c68fde8fe9f145cd43b8dd083671a6f
-        x-checker-data:
-          type: anitya
-          project-id: 133196
-          stable-only: true
-          url-template: https://github.com/denoland/deno/releases/download/v$version/deno-x86_64-unknown-linux-gnu.zip
-      - type: archive
-        only-arches:
-          - aarch64
-        url: https://github.com/denoland/deno/releases/download/v2.7.1/deno-aarch64-unknown-linux-gnu.zip
-        sha256: bfe62e582faceb9885748f00a9f44cd5af458b9d08d7ac8275c4048ff1bb1540
-        x-checker-data:
-          type: anitya
-          project-id: 133196
-          stable-only: true
-          url-template: https://github.com/denoland/deno/releases/download/v$version/deno-aarch64-unknown-linux-gnu.zip
-
   - name: clang-format
     buildsystem: cmake-ninja
     subdir: llvm
