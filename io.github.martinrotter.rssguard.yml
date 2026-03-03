@@ -132,8 +132,8 @@ modules:
       - -DIS_FLATPAK_BUILD=ON
     sources:
       - type: archive
-        url: https://github.com/martinrotter/rssguard/releases/download/5.0.0/rssguard-5.0.0-src.tar.gz
-        sha256: 4500b35897b41fefe0b042e44b50aecfb4afd47cfdda265fdc0c31cd725136b9
+        url: https://github.com/martinrotter/rssguard/releases/download/5.0.1/rssguard-5.0.1-src.tar.gz
+        sha256: 6570e417a81c8ecd87d34373cdefca811ff3c8bdb95ba14b088e2c40ce813ae8
         x-checker-data:
           type: anitya
           project-id: 19046
