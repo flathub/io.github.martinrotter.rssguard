@@ -103,8 +103,8 @@ modules:
     sources:
       - type: archive
         dest-filename: yt-dlp.tar.gz
-        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2026.03.03.tar.gz
-        sha256: e7d718b4f2de8ca31660ae65a49792a572292dde3ddddc0ef5362c8377e2c80c
+        url: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2026.03.13.tar.gz
+        sha256: 39a35d59b0f2eb913909698fe2f4f8bb5a5767c0b01bc8cf521047459a760702
         x-checker-data:
           type: anitya
           project-id: 143399
@@ -147,8 +147,8 @@ modules:
       - -DIS_FLATPAK_BUILD=ON
     sources:
       - type: archive
-        url: https://github.com/martinrotter/rssguard/releases/download/5.0.3/rssguard-5.0.3-src.tar.gz
-        sha256: 8d8ff7ed21e32378319e2657b6740eafaad5351b80a5892ca62eeee18f8a245f
+        url: https://github.com/martinrotter/rssguard/releases/download/5.0.4/rssguard-5.0.4-src.tar.gz
+        sha256: 0a8750da59a3c9c245db604bd71fa23aa7d10e4ce6d502eaee343f1796c9d1a1
         x-checker-data:
           type: anitya
           project-id: 19046
