@@ -16,6 +16,11 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Notifications
 
+cleanup:
+  - /bin/dateparser-download
+  - /bin/maturin
+  - /lib/python*/maturin*
+
 modules:
   - name: libmpv
     buildsystem: meson
@@ -133,6 +138,27 @@ modules:
           project-id: 1830
           stable-only: true
           url-template: https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz
+
+  - name: css2rss
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 -t /app/bin css2rss
+      - install -Dm644 -t /app/share/scripts css2rss.py
+    sources:
+      - type: archive
+        url: https://github.com/Owyn/CSS2RSS/archive/214ed7b6b125a47f1b489a9a790e87ae7ec9608f.tar.gz
+        sha256: fca0cc34136b1344b9d00bf57cefafdc5d5dee3c02e2d27670fd14c01803f0c7
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/Owyn/CSS2RSS/commits?per_page=1
+          version-query: .[0].sha
+          url-query: '"https://github.com/Owyn/CSS2RSS/archive/" + $version + ".tar.gz"'
+      - type: script
+        dest-filename: css2rss
+        commands:
+          - exec python /app/share/scripts/css2rss.py "$@"
+    modules:
+      - css2rss-dependencies.json
 
   - name: rssguard
     buildsystem: cmake-ninja
