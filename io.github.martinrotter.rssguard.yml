@@ -1,6 +1,8 @@
 id: io.github.martinrotter.rssguard
 runtime: org.kde.Platform
 runtime-version: '6.10'
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang # To build rssguard-article-extractor
@@ -8,6 +10,7 @@ command: rssguard
 
 finish-args:
   - --device=dri
+  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
   - --share=ipc
   - --share=network
   - --socket=fallback-x11
@@ -15,6 +18,9 @@ finish-args:
   - --socket=wayland
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Notifications
+
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 
 modules:
   - name: libmpv
@@ -134,6 +140,25 @@ modules:
           stable-only: true
           url-template: https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz
 
+  - name: qxmpp
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_TESTING=OFF
+      - -DBUILD_EXAMPLES=OFF
+    sources:
+      - type: archive
+        url: https://download.kde.org/unstable/qxmpp/qxmpp-1.15.1.tar.xz
+        sha256: 0747758a4f5b5ea4c60686c65b390766f1909d09e1a5a457c8e80ef272730c46
+        x-checker-data:
+          type: anitya
+          project-id: 4149
+          stable-only: true
+          url-template: https://download.kde.org/unstable/qxmpp/qxmpp-$version.tar.xz
+    cleanup:
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
+
   - name: rssguard
     buildsystem: cmake-ninja
     build-options:
@@ -145,10 +170,11 @@ modules:
       - -DREVISION_FROM_GIT=OFF
       - -DNO_UPDATE_CHECK=ON
       - -DIS_FLATPAK_BUILD=ON
+      - -DBUILD_XMPP_PLUGIN=ON
     sources:
       - type: archive
-        url: https://github.com/martinrotter/rssguard/releases/download/5.0.4/rssguard-5.0.4-src.tar.gz
-        sha256: 0a8750da59a3c9c245db604bd71fa23aa7d10e4ce6d502eaee343f1796c9d1a1
+        url: https://github.com/martinrotter/rssguard/releases/download/5.1.0/rssguard-5.1.0-src.tar.gz
+        sha256: eb36e6bda7996901c3492c293461037067c45a6bae31efad29ff9e4ba55471fd
         x-checker-data:
           type: anitya
           project-id: 19046
