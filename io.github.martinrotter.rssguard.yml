@@ -144,6 +144,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DBUILD_TESTING=OFF
+      - -DBUILD_DOCUMENTATION=OFF
       - -DBUILD_EXAMPLES=OFF
     sources:
       - type: archive
