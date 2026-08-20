@@ -174,8 +174,8 @@ modules:
       - -DBUILD_XMPP_PLUGIN=ON
     sources:
       - type: archive
-        url: https://github.com/martinrotter/rssguard/releases/download/5.2.4/rssguard-5.2.4-src.tar.gz
-        sha256: 83a708c05862909f2c23580e7107e81ac14ceea50baf90b7dad40652ed6de960
+        url: https://github.com/martinrotter/rssguard/releases/download/5.2.5/rssguard-5.2.5-src.tar.gz
+        sha256: 5051308aaff854e5b1948e23b02871cd8d4fb4b870bdb688a8b98e907e6a0614
         x-checker-data:
           type: anitya
           project-id: 19046
