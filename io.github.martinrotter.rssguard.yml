@@ -148,8 +148,8 @@ modules:
       - -DBUILD_EXAMPLES=OFF
     sources:
       - type: archive
-        url: https://download.kde.org/unstable/qxmpp/qxmpp-1.17.1.tar.xz
-        sha256: 806bf5c0f8830d181dcab7e3d257e557d59f4717c706df1844959e47879e792f
+        url: https://download.kde.org/unstable/qxmpp/qxmpp-1.17.2.tar.xz
+        sha256: 82c5d89e832d124e73d4284d18c0146a7a3e684af90dd12120e1964bb2a889d7
         x-checker-data:
           type: anitya
           project-id: 4149
